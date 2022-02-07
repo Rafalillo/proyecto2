@@ -1,0 +1,163 @@
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    width: 100%!important;
+}
+
+.body {
+    background-color: #D1E7DD;
+}
+
+/****************** barra navegacion ******************/
+.container-fluid {
+    position: fixed;
+    margin-top: 35px;
+    border-bottom: solid 2px black;
+    z-index: 5;
+}
+
+nav .container-fluid {
+    background-color: #D1E7DD;
+}
+
+
+nav img {
+    height: 50px;
+    opacity: 0.9;
+}
+
+/************** pagina index ****************************/
+
+.container {
+    margin-top: 50px;
+    background-color: D1E7DD;
+}
+
+/* .card-index {
+    display: flex;
+    justify-content:space-around;
+    padding: 10px;
+} */
+
+
+
+.lideres {
+    margin-top: 50px;
+}
+.card-lider {
+    margin-bottom: 10px;
+    margin-left: 10px;
+    background-color: #C1D6CC !important;
+    opacity: 0.8;
+}
+
+.card-header {
+    background-color: #d1e1e7;
+}
+
+.lideres .card-index .jugador {
+    display: flex;
+    float: right;
+}
+
+.lideres .card-index .card-img-top {
+    display: block;
+    margin: auto;
+    width: 100px;
+    border: 2px solid #047e78;
+}
+
+.lideres .card-index .bandera {
+    height: 25px;
+    width: 50px;
+    margin-top: 50px;
+}
+
+.lideres .card-index .card-lista-jugador {
+    font-size: 0.8em;
+    border: 1px solid #047e78;
+}
+
+.lideres .card-index .card-lista-jugador img {
+    width: 25px;
+    height: 25PX;
+}
+
+.carrusel .carousel-item .carrusel-foto {
+    display: block;
+    margin: auto;
+    width: 750px !important;
+    height: 500px;
+    
+} 
+
+.carrusel .carousel-item .carrusel-piefoto {
+    display: block;
+    margin: auto;
+    width: 750px !important;
+    
+    
+} 
+
+.news {
+    width: 100%!important;
+    margin-top: 50px;
+    
+}
+
+.news .card-body .card-title {
+    font-weight: bold;
+}
+
+.news .card-news {
+    margin-left: 250px;
+    width: 60%
+    
+    
+
+}
+
+
+
+
+/************** pagina clasificacion ********************/
+
+.filtro {
+    margin-top: 50px;
+    width: fit-content;
+}
+
+table img {
+    width: 30px;
+}
+
+/************** pagina partidos *************************/
+
+.partidos-input {
+    margin-top: 50px;
+}
+
+.boton-equipo {
+    margin-left: 50px!important;
+    background-color: #C7DBD2;
+    color: black;
+}
+
+.boton-check-equipo {
+    background-color: #C7DBD2;
+}
+
+.lista-buscar {
+    margin-left: 75px ;
+}
+/************** footer *************************/
+
+footer {
+
+    margin-top: 25px;
+    background-color: #d1e1e7;
+    border-top: 1px solid black;
+}
