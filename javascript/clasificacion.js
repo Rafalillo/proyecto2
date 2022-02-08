@@ -2,30 +2,9 @@ let resultados = dataclasificacion.standings[0].table;
 let filtroEquipo = document.getElementById("filtroCla");
 let selectTabla = document.getElementById("tablaClasificacion");
 
-console.log(filtroEquipo);
-
-filtroEquipo.addEventListener("change", () => {
-    console.log(filtroEquipo.value);
-    console.log(selectTabla);
-})
-
-function crearFiltro(resultados) {
-    if (filtroEquipo == 1) {
-                resultados.sort((a, b) => {
-                    if (a.position > b.position) {
-                        return -1;
-                    }
-                })
-
-            
-    }
-}
-
-crearFiltro(resultados);
 function tablaClasifi() {
     let tablaStanding = document.getElementById("tablaClasificacion")
-    // tablaStanding.innerHTML = "";
-
+    
     for (let i = 0; i < resultados.length; i++) {
         const trClasifi = document.createElement("tr");
 

@@ -24,26 +24,6 @@ function crearFiltro(parti) {
         }
     })
     tablaVs(nombreEqInput)
-    // let resultadoPartido = nombreEqInput.filter(resul => {
-    //         if (checkEntrada.value === "ganado") {
-    //             if (((resul.homeTeam.name.toLowerCase().includes(inputEntrada.toLowerCase())) && (resul.score.winner == "HOME_TEAM"))
-    //             || ((resul.awayTeam.name.toLowerCase().includes(inputEntrada.toLowerCase())) && (resul.score.winner == "AWAY_TEAM"))){
-    //                 return true
-    //             } 
-    //         } else if (checkEntrada.value === "empatado") {
-    //             if (((resul.homeTeam.name.toLowerCase().includes(inputEntrada.toLowerCase())) && (resul.score.winner == "DRAW"))
-    //             || ((resul.awayTeam.name.toLowerCase().includes(inputEntrada.toLowerCase())) && (resul.score.winner == "DRAW"))){
-    //                 return true
-    //             } 
-    //         } else if (checkEntrada.value === "perdido") {
-    //             if (((resul.homeTeam.name.toLowerCase().includes(inputEntrada.toLowerCase())) && (resul.score.winner == "AWAY_TEAM"))
-    //             || ((resul.awayTeam.name.toLowerCase().includes(inputEntrada.toLowerCase())) && (resul.score.winner == "HOME_TEAM"))){
-    //                 return true
-    //             } 
-    //         } 
-
-    // })
-    // tablaVs(resultadoPartido);
 }
 
 
@@ -84,26 +64,26 @@ tablaVs(encuentros);
 function crearFiltro2() {
     let checkEntrada = document.querySelector("input[type=radio]:checked")
     let inputEntrada = document.getElementById("input-partidos").value
-let resultadoPartido = encuentros.filter(resul => {
-    if (checkEntrada.value === "ganado") {
-        if (((resul.homeTeam.name.toLowerCase().includes(inputEntrada.toLowerCase())) && (resul.score.winner == "HOME_TEAM"))
-        || ((resul.awayTeam.name.toLowerCase().includes(inputEntrada.toLowerCase())) && (resul.score.winner == "AWAY_TEAM"))){
-            return true
-        } 
-    } else if (checkEntrada.value === "empatado") {
-        if (((resul.homeTeam.name.toLowerCase().includes(inputEntrada.toLowerCase())) && (resul.score.winner == "DRAW"))
-        || ((resul.awayTeam.name.toLowerCase().includes(inputEntrada.toLowerCase())) && (resul.score.winner == "DRAW"))){
-            return true
-        } 
-    } else if (checkEntrada.value === "perdido") {
-        if (((resul.homeTeam.name.toLowerCase().includes(inputEntrada.toLowerCase())) && (resul.score.winner == "AWAY_TEAM"))
-        || ((resul.awayTeam.name.toLowerCase().includes(inputEntrada.toLowerCase())) && (resul.score.winner == "HOME_TEAM"))){
-            return true
-        } 
-    } 
+    let resultadoPartido = encuentros.filter(resul => {
+        if (checkEntrada.value === "ganado") {
+            if (((resul.homeTeam.name.toLowerCase().includes(inputEntrada.toLowerCase())) && (resul.score.winner == "HOME_TEAM")) ||
+                ((resul.awayTeam.name.toLowerCase().includes(inputEntrada.toLowerCase())) && (resul.score.winner == "AWAY_TEAM"))) {
+                return true
+            }
+        } else if (checkEntrada.value === "empatado") {
+            if (((resul.homeTeam.name.toLowerCase().includes(inputEntrada.toLowerCase())) && (resul.score.winner == "DRAW")) ||
+                ((resul.awayTeam.name.toLowerCase().includes(inputEntrada.toLowerCase())) && (resul.score.winner == "DRAW"))) {
+                return true
+            }
+        } else if (checkEntrada.value === "perdido") {
+            if (((resul.homeTeam.name.toLowerCase().includes(inputEntrada.toLowerCase())) && (resul.score.winner == "AWAY_TEAM")) ||
+                ((resul.awayTeam.name.toLowerCase().includes(inputEntrada.toLowerCase())) && (resul.score.winner == "HOME_TEAM"))) {
+                return true
+            }
+        }
 
-})
-tablaVs(resultadoPartido);
+    })
+    tablaVs(resultadoPartido);
 }
 // function crearFiltro2() {
 
