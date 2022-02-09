@@ -1,8 +1,22 @@
 let estadisticas = datapartidos.matches;
 let estadisticasPartido = [];
 
+function move() {
+    
+    setInterval(function () {
+        
+        document.getElementById("spin").classList.add("d-none")
+    }, 500);
+    estadisticasFavor(estadisticas);
+    
+}
 
+move();
+    goals_matches(estadisticasPartido);
+    promedioGoles(estadisticasPartido);
+    menosGoles(estadisticasPartido);
 function estadisticasFavor(estadisticas) {
+    
     for (let i = 0; i < estadisticas.length; i++) {
         let estadoPartido = estadisticas[i].status;
         if (estadoPartido !== "FINISHED") {
@@ -64,7 +78,7 @@ function estadisticasFavor(estadisticas) {
     }console.log(estadisticasPartido);
 }
 
-estadisticasFavor(estadisticas)
+
 
 function goals_matches() {
     for (let i = 0; i < estadisticasPartido.length; i++) {
@@ -74,7 +88,7 @@ function goals_matches() {
 
     }
 }
-goals_matches(estadisticasPartido);
+
 
 function promedioGoles() {
     let tablaPromedioFavor = document.getElementById("tablaGolesFavor");
@@ -124,8 +138,6 @@ function menosGoles() {
         let partidos = document.createElement("p");
         partidos.innerHTML = estadisticasPartido[i].matches;
 
-        
-
         let datosMenos = [nombre, goles, partidos];
 
         for (let j = 0; j < datosMenos.length; j++) {
@@ -137,6 +149,4 @@ function menosGoles() {
 
     }
 }
-
-promedioGoles(estadisticasPartido);
-menosGoles(estadisticasPartido);
+                            

@@ -79,10 +79,34 @@
                 </div>
             </div>
         </div>
-
-
     </div>
+        <!------------------ Modal ---------------->
 
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Equipo vacio</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Debe seleccionar un equipo para continuar
+                    </div>
+                    <div class="modal-footer">
+                        <button id="cerrar-modal" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+    <div class="main-partidos">
+        <div id="spin" class="text-center spinner">
+            <div class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
     <table class="table table-success table-striped table-hover">
         <thead>
             <th>Eq Local</th>
@@ -99,7 +123,7 @@
     <script src="/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
     <script src="/javascript/tablamatches.js"></script>
     <script src="/javascript/partidos.js"></script>
-
+    </div>
 </body>
 
 </html>

@@ -9,8 +9,14 @@ html {
 
 .body {
     background-color: #D1E7DD;
+    display: flex;
+  flex-direction: column; 
 }
 
+footer {
+    text-align: center;
+    height: 45px;
+}
 /****************** barra navegacion ******************/
 .container-fluid {
     position: fixed;
@@ -134,10 +140,28 @@ table img {
     width: 30px;
 }
 
+.main-clasificacion {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 50px;
+}
+
+.clas {
+    text-align: center;
+}
 /************** pagina partidos *************************/
 
+
+.main-partidos {
+    margin-top: 150px;
+    width: 50%;
+    margin-left: 25%;
+}
 .partidos-input {
-    margin-top: 50px;
+    position: fixed;
+    /*clear: both; */
+    margin-top: 50px; 
+    
 }
 
 .boton-equipo {
@@ -154,14 +178,55 @@ table img {
     margin-left: 75px ;
 }
 
+.tabla-partidos {
+    margin-top: 150px!important;
+}
+
+.spinner {
+    width: 100%;
+    height: 30px;
+    position: relative;
+    margin-top: 150px;
+    margin-bottom: 750px;
+  }
+  
+
+
+.footer-partidos {
+    /* position: relative; */
+    /* position: absolute;
+    bottom: 0; */
+}
 /************** pagina estadisticas *************************/
 
 .main-estadisticas {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    width: 100%!important;
     margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
+.max-goles {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 135px;
+}
 
+.menos-goles {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 135px;
+}
 
+/* .footer-estadistica {
+    margin-top: 950px;
+} */
 
 /************** footer *************************/
 
@@ -171,3 +236,5 @@ footer {
     background-color: #d1e1e7;
     border-top: 1px solid black;
 }
+
+

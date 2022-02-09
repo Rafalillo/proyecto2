@@ -42,7 +42,13 @@
     </nav>
 
     <div class="main-estadisticas">
-        <div class="media-favor">
+        <div id="spin" class="text-center spinner">
+            <div class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+          </div>
+        <div class="max-goles text-center">
+            <H1>TOP 5 EQUIPOS MEJOR PROMEDIO DE GOLES</H1>
             <table class="table table-success table-striped table-hover">
                 <thead>
                     <th>Nombre</th>
@@ -55,7 +61,8 @@
                 </tbody>
             </table>
         </div>
-        <div class="menos-goles">
+        <div class="menos-goles text-center">
+            <h1>TOP 5 EQUIPOS MENOS GOLEADOS</h1>
             <table class="table table-success table-striped table-hover">
                 <thead>
                     <th>Nombre</th>
@@ -70,8 +77,8 @@
         </div>
     </div>
 
-    <footer>
-        <h1>HOOOOOOOOOOOOOOOOOOla</h1>
+    <footer class="footer-estadistica">
+        <p>&#9400; copyright Rafa Sánchez</p>
     </footer>
     <script src="/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
     <script src="/javascript/tablamatches.js"></script>

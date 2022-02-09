@@ -2,9 +2,20 @@ let resultados = dataclasificacion.standings[0].table;
 let filtroEquipo = document.getElementById("filtroCla");
 let selectTabla = document.getElementById("tablaClasificacion");
 
+function move() {
+    
+    setInterval(function () {
+        
+        document.getElementById("spin").classList.add("d-none")
+    }, 500);
+    tablaClasifi();
+}
+
+move();
+
 function tablaClasifi() {
     let tablaStanding = document.getElementById("tablaClasificacion")
-    
+
     for (let i = 0; i < resultados.length; i++) {
         const trClasifi = document.createElement("tr");
 
@@ -53,7 +64,7 @@ function tablaClasifi() {
     }
 }
 
-tablaClasifi();
+
 // console.log(i);
 // function filtroClasificacion() {
 //     resultados.sort(function (a,b) {

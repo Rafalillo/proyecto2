@@ -1,10 +1,36 @@
 let encuentros = datapartidos.matches;
 let input = document.getElementById("selec-partido");
+let cambiaModal = document.getElementById("cerrar-modal");
 let check_button = document.getElementById("check-equipo");
+let inputEntrada = document.getElementById("input-partidos").value
 let resultado;
 
+
+function move() {
+    
+    setInterval(function () {
+        // tablaClasifi();
+        document.getElementById("spin").classList.add("d-none")
+    }, 500);
+    
+}
+
+
+move();
+tablaVs(encuentros);
 input.addEventListener("click", () => {
+    let inputEntrada = document.getElementById("input-partidos").value
+    
+    if (inputEntrada === "") {
+        document.getElementById("selec-partido").setAttribute("data-bs-toggle", "modal")
+        document.getElementById("selec-partido").setAttribute("data-bs-target", "#exampleModal")
+    }
     crearFiltro(encuentros);
+})
+
+cambiaModal.addEventListener("click", () => {
+    document.getElementById("selec-partido").setAttribute("data-bs-toggle", "collapse")
+    document.getElementById("selec-partido").setAttribute("data-bs-target", "#collapseExample")
 })
 
 check_button.addEventListener("click", () => {
@@ -13,6 +39,13 @@ check_button.addEventListener("click", () => {
 
 function crearFiltro(parti) {
     let inputEntrada = document.getElementById("input-partidos").value
+    
+        if (inputEntrada === "") {
+            document.getElementById("selec-partido").setAttribute("data-bs-toggle", "modal")
+            document.getElementById("selec-partido").setAttribute("data-bs-target", "#exampleModal")
+        }
+        
+      
     let checkEntrada = document.querySelector("input[type=radio]:checked")
 
     let nombreEqInput = parti.filter(p => {
@@ -30,12 +63,13 @@ function crearFiltro(parti) {
 function tablaVs(encuentros) {
     let tablaPartidos = document.getElementById("tablaPartidos");
     tablaPartidos.innerHTML = "";
+
     for (let i = 0; i < encuentros.length; i++) {
         const trpartidos = document.createElement("tr");
 
         let eqLocal = document.createElement("p");
         eqLocal.innerHTML = encuentros[i].homeTeam.name;
-
+        
         let resulVisita = document.createElement("p");
         resulVisita.innerHTML = encuentros[i].score.fullTime.homeTeam + "-" + encuentros[i].score.fullTime.awayTeam;
 
@@ -58,7 +92,7 @@ function tablaVs(encuentros) {
     }
 }
 
-tablaVs(encuentros);
+// tablaVs(encuentros);
 
 
 function crearFiltro2() {
