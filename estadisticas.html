@@ -45,10 +45,22 @@
         <div id="spin" class="text-center spinner">
             <div class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
                 <span class="visually-hidden">Loading...</span>
-              </div>
-          </div>
+            </div>
+        </div>
+        <div class="botones">
+            <div class="boton">
+                <button id="LaLiga" class="btn btn-primary boton-liga">La Liga</button>
+            </div>
+            <div class="boton">
+                <button id="premier" class="btn btn-primary boton-liga">Premier League</button>
+            </div>
+            <div class="boton">
+                <button id="ligue" class="btn btn-primary boton-liga">Ligue 1</button>
+            </div>
+        </div>
+        <h1 id = "texto-estadisticas" class="text-center"></h1>
         <div class="max-goles text-center">
-            <H1>TOP 5 EQUIPOS MEJOR PROMEDIO DE GOLES</H1>
+            <H2>TOP 5 EQUIPOS MEJOR PROMEDIO DE GOLES</H2>
             <table class="table table-success table-striped table-hover">
                 <thead>
                     <th>Nombre</th>
@@ -57,21 +69,21 @@
                     <th>Promedio de goles</th>
                 </thead>
                 <tbody id=tablaGolesFavor>
-        
+
                 </tbody>
             </table>
         </div>
         <div class="menos-goles text-center">
-            <h1>TOP 5 EQUIPOS MENOS GOLEADOS</h1>
+            <h2>TOP 5 EQUIPOS MENOS GOLEADOS</h2>
             <table class="table table-success table-striped table-hover">
                 <thead>
                     <th>Nombre</th>
                     <th>Goles en contra</th>
                     <th>Partidos disputados</th>
-                    
+
                 </thead>
                 <tbody id="tablaMenosGoles">
-        
+
                 </tbody>
             </table>
         </div>

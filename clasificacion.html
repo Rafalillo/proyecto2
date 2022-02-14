@@ -39,7 +39,67 @@
         </div>
     </nav>
 
-    <div class="filtro">
+    -->
+
+    <br>
+
+    <div class="main-clasificacion">
+        <div class="botones">
+            <div class="boton">
+                <button id="LaLiga-clas" class="btn btn-primary boton-liga">La Liga</button>
+            </div>
+            <div class="boton">
+                <button id="premier-clas" class="btn btn-primary boton-liga">Premier League</button>
+            </div>
+            <div class="boton">
+                <button id="ligue-clas" class="btn btn-primary boton-liga">Ligue 1</button>
+            </div>
+        </div>
+        <div id="spin" class="text-center spinner">
+            <div class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        
+        <div class="clasificacion">
+            <h1 id = "texto-clasificacion" class="text-center"></h1>
+            <table class="table table-success table-striped table-hover">
+                <thead>
+                    <th>Pos
+                        <svg class="ue-c-table-ranking__sort-arrows" xmlns="http://www.w3.org/2000/svg" width="8px"
+                            height="10px" viewBox="0 0 8 10">
+                            <path class="arrow up flechas" d="M4,0l4,4H0L4,0z"></path>
+                            <path class="arrow down flechas" d="M4,10L0,6h8L4,10z"></path>
+                        </svg></th>
+                    <th></th>
+                    <th></th>
+                    <th>PJ</th>
+                    <th>V</th>
+                    <th>E</th>
+                    <th>P</th>
+                    <th>GF</th>
+                    <th>GC</th>
+                    <th>DG</th>
+                    <th>Pts</th>
+                </thead>
+                <tbody id=tablaClasificacion>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer class="footer-clasificacion">
+        <p>&#9400; copyright Rafa Sánchez</p>
+    </footer>
+    <script src="/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/javascript/tablastandings.js"></script>
+    <script src="/javascript/clasificacion.js"></script>
+
+</body>
+
+</html>
+
+<!-- <div class="filtro">
         <select name="filtroClasificacion" id="filtroCla" class="form-select">
             <option selected value="">Selecciona tu criterio</option>
             <option value="posicion" id="pos">Posición</option>
@@ -53,47 +113,3 @@
             <option value="puntaje" id="puntos">Puntos</option>
         </select>
     </div>
-
-    <br>
-    <div class="main-clasificacion">
-        <div id="spin" class="text-center spinner">
-            <div class="spinner-border" style="width: 10rem; height: 10rem;" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </div>
-        <br>
-        <h1 class="clas">CLASIFICACIÓN LA LIGA SANTANDER 2021-2022</h1>
-        <table class="table table-success table-striped table-hover">
-            <thead>
-                <th>Pos
-                    <svg class="ue-c-table-ranking__sort-arrows" xmlns="http://www.w3.org/2000/svg" width="8px"
-                        height="10px" viewBox="0 0 8 10">
-                        <path class="arrow up flechas" d="M4,0l4,4H0L4,0z"></path>
-                        <path class="arrow down flechas" d="M4,10L0,6h8L4,10z"></path>
-                    </svg></th>
-                <th></th>
-                <th></th>
-                <th>PJ</th>
-                <th>V</th>
-                <th>E</th>
-                <th>P</th>
-                <th>GF</th>
-                <th>GC</th>
-                <th>DG</th>
-                <th>Pts</th>
-            </thead>
-            <tbody id=tablaClasificacion>
-
-            </tbody>
-        </table>
-    </div>
-    <footer class="footer-clasificacion">
-        <p>&#9400; copyright Rafa Sánchez</p>
-    </footer>
-    <script src="/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/javascript/tablastandings.js"></script>
-    <script src="/javascript/clasificacion.js"></script>
-
-</body>
-
-</html>

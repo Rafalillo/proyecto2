@@ -1,23 +1,65 @@
-let resultados = dataclasificacion.standings[0].table;
+// let resultados = dataclasificacion.standings[0].table;
+let texto = "LIGA";
+let titular = document.getElementById("texto-clasificacion");
 let filtroEquipo = document.getElementById("filtroCla");
 let selectTabla = document.getElementById("tablaClasificacion");
-
-function move() {
+const url = "https://api.football-data.org/v2/competitions/2014/standings"
+const urlPremier = "https://api.football-data.org/v2/competitions/2021/standings";
+const urlLigue = "https://api.football-data.org/v2/competitions/2015/standings";
+function fetchEstadisticas(url) {
     
-    setInterval(function () {
-        
-        document.getElementById("spin").classList.add("d-none")
-    }, 500);
-    tablaClasifi();
+    fetch(url, {
+        method:"GET",
+        headers: {
+            "X-Auth-Token" : "ae293df4eff84857b6dc78121abb4db0"
+        }
+    }).then(response => {
+        if (response.ok){
+            return response.json()
+        }
+    }).then(data => {
+        resultados = data.standings[0].table
+        quitarSpin();
+        titular.innerHTML = "CLASIFICACION DE LA " + texto;
+        tablaClasifi(resultados)
+    })
 }
 
-move();
+fetchEstadisticas(url);
+
+document.getElementById("LaLiga-clas").addEventListener("click", ()=> {
+    
+    fetchEstadisticas(url);
+    texto = "LIGA"
+    resultados = [];
+})
+
+document.getElementById("premier-clas").addEventListener("click", ()=> {
+    
+    fetchEstadisticas(urlPremier);
+    texto = "PREMIER LEAGUE"
+    resultados = [];
+})
+
+document.getElementById("ligue-clas").addEventListener("click", ()=> {
+    // let urlPremier = "https://api.football-data.org/v2/competitions/2021/matches";
+    fetchEstadisticas(urlLigue);
+    texto = "LIGUE 1"
+    resultados = [];
+})
+
+
+function quitarSpin() {
+    document.getElementById("spin").classList.add("d-none")    
+}
 
 function tablaClasifi() {
-    let tablaStanding = document.getElementById("tablaClasificacion")
+    let tablaStanding = document.getElementById("tablaClasificacion");
+    tablaStanding.innerHTML = "";
 
     for (let i = 0; i < resultados.length; i++) {
         const trClasifi = document.createElement("tr");
+        
 
         let pos = document.createElement("p");
         pos.innerHTML = resultados[i].position;
@@ -65,11 +107,3 @@ function tablaClasifi() {
 }
 
 
-// console.log(i);
-// function filtroClasificacion() {
-//     resultados.sort(function (a,b) {
-//         if (a.puntos > b.puntos) {
-
-//         }
-//     })
-// }

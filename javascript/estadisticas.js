@@ -1,20 +1,62 @@
-let estadisticas = datapartidos.matches;
+let titular = document.getElementById("texto-estadisticas");
+let texto = "LIGA";
 let estadisticasPartido = [];
+const url = "https://api.football-data.org/v2/competitions/2014/matches"
+const urlPremier = "https://api.football-data.org/v2/competitions/2021/matches";
+const urlLigue = "https://api.football-data.org/v2/competitions/2015/matches";
 
-function move() {
+function fetchEstadisticas(url) {
     
-    setInterval(function () {
-        
-        document.getElementById("spin").classList.add("d-none")
-    }, 500);
-    estadisticasFavor(estadisticas);
-    
+    fetch(url, {
+        method:"GET",
+        headers: {
+            "X-Auth-Token" : "ae293df4eff84857b6dc78121abb4db0"
+        }
+    }).then(response => {
+        if (response.ok){
+            return response.json()
+        }
+    }).then(data => {
+        estadisticas = data.matches
+        console.log(estadisticas)
+        quitarSpin();
+        console.log(texto);
+        titular.innerHTML = "ESTADISTICAS MEJORES EQUIPOS DE LA " + texto;
+        estadisticasFavor(estadisticas)
+        goals_matches();
+        promedioGoles();
+        menosGoles();
+    })
 }
 
-move();
-    goals_matches(estadisticasPartido);
-    promedioGoles(estadisticasPartido);
-    menosGoles(estadisticasPartido);
+
+
+function quitarSpin() {
+    document.getElementById("spin").classList.add("d-none")    
+}
+fetchEstadisticas(url);
+
+document.getElementById("LaLiga").addEventListener("click", ()=> {
+    
+    fetchEstadisticas(url);
+    texto = "LIGA"
+    estadisticasPartido = [];
+})
+
+document.getElementById("premier").addEventListener("click", ()=> {
+    
+    fetchEstadisticas(urlPremier);
+    texto = "PREMIER LEAGUE"
+    estadisticasPartido = [];
+})
+
+document.getElementById("ligue").addEventListener("click", ()=> {
+    // let urlPremier = "https://api.football-data.org/v2/competitions/2021/matches";
+    fetchEstadisticas(urlLigue);
+    texto = "LIGUE 1"
+    estadisticasPartido = [];
+})
+    
 function estadisticasFavor(estadisticas) {
     
     for (let i = 0; i < estadisticas.length; i++) {
@@ -92,6 +134,8 @@ function goals_matches() {
 
 function promedioGoles() {
     let tablaPromedioFavor = document.getElementById("tablaGolesFavor");
+    tablaPromedioFavor.innerHTML = "";
+    console.log(estadisticasPartido)
     estadisticasPartido.sort((a,b) => (a.avg < b.avg) ? 1: -1);
 
     for (let i = 0; i <= 4; i++) {
@@ -123,7 +167,8 @@ function promedioGoles() {
 }
 
 function menosGoles() {
-    let tablaMenosGolesFuera = document.getElementById("tablaMenosGoles")
+    let tablaMenosGolesFuera = document.getElementById("tablaMenosGoles");
+    tablaMenosGolesFuera.innerHTML = "";
     estadisticasPartido.sort((a,b) => (a.goalsAgainst > b.goalsAgainst) ? 1: -1);
 
     for (let i = 0; i <= 4; i++) {
