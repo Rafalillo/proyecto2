@@ -8,8 +8,31 @@ let titular = document.getElementById("texto-partidos");
 const url = "https://api.football-data.org/v2/competitions/2014/matches"
 const urlPremier = "https://api.football-data.org/v2/competitions/2021/matches";
 const urlLigue = "https://api.football-data.org/v2/competitions/2015/matches";
-let resultado;
+let escudoLocal1;
+let escudoVis1;
+const urlequipos = "https://api.football-data.org/v2/competitions/2014/standings"
+const urlPremierequipos = "https://api.football-data.org/v2/competitions/2021/standings";
+const urlLigueequipos = "https://api.football-data.org/v2/competitions/2015/standings";
 
+
+function fetchequipos(urlequipos) {
+    
+    fetch(urlequipos, {
+        method:"GET",
+        headers: {
+            "X-Auth-Token" : "ae293df4eff84857b6dc78121abb4db0"
+        }
+    }).then(response => {
+        if (response.ok){
+            return response.json()
+        }
+    }).then(dataequipos => {
+        resultados = dataequipos.standings[0].table
+        
+    })
+}
+
+fetchequipos(urlequipos);
 
 function fetchPartidos(url) {
     
@@ -80,21 +103,21 @@ function fetchPartidos(url) {
 fetchPartidos(url);
 
 document.getElementById("LaLiga-partidos").addEventListener("click", ()=> {
-    
+    fetchequipos(urlequipos)
     fetchPartidos(url);
     texto = "LIGA"
     
 })
 
 document.getElementById("premier-partidos").addEventListener("click", ()=> {
-    
+    fetchequipos(urlPremierequipos)
     fetchPartidos(urlPremier);
     texto = "PREMIER LEAGUE"
     
 })
 
 document.getElementById("ligue-partidos").addEventListener("click", ()=> {
-    // let urlPremier = "https://api.football-data.org/v2/competitions/2021/matches";
+    fetchequipos(urlLigueequipos)
     fetchPartidos(urlLigue);
     texto = "LIGUE 1"
     
@@ -134,7 +157,19 @@ function tablaVs(encuentros) {
     tablaPartidos.innerHTML = "";
 
     for (let i = 0; i < encuentros.length; i++) {
+        for (let x = 0; x < resultados.length; x++) {
+            if (encuentros[i].homeTeam.id == resultados[x].team.id) {
+                escudoLocal1 = resultados[x].team.crestUrl
+            } else if (encuentros[i].awayTeam.id == resultados[x].team.id) {
+                escudoVis1 = resultados[x].team.crestUrl
+            }
+            
+        }
         const trpartidos = document.createElement("tr");
+        
+
+        let escudoLocal = document.createElement("img");
+        escudoLocal.setAttribute("src", escudoLocal1)
 
         let eqLocal = document.createElement("p");
         eqLocal.innerHTML = encuentros[i].homeTeam.name;
@@ -142,6 +177,9 @@ function tablaVs(encuentros) {
         let resulVisita = document.createElement("p");
         resulVisita.innerHTML = encuentros[i].score.fullTime.homeTeam + "-" + encuentros[i].score.fullTime.awayTeam;
 
+        let escudoVis = document.createElement("img");
+        escudoVis.setAttribute("src", escudoVis1)
+        
         let eqVisitante = document.createElement("p");
         eqVisitante.innerHTML = encuentros[i].awayTeam.name;
 
@@ -150,7 +188,7 @@ function tablaVs(encuentros) {
         let jornada = document.createElement("p");
         jornada.innerHTML = encuentros[i].matchday;
 
-        let datosCogidos = [eqLocal, resulVisita, eqVisitante, fecha.toLocaleString(), jornada];
+        let datosCogidos = [escudoLocal, eqLocal, resulVisita, escudoVis, eqVisitante, fecha.toLocaleString(), jornada];
 
         for (let j = 0; j < datosCogidos.length; j++) {
             const tdpartidos = document.createElement("td");

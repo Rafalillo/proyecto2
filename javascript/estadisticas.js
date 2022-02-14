@@ -4,6 +4,33 @@ let estadisticasPartido = [];
 const url = "https://api.football-data.org/v2/competitions/2014/matches"
 const urlPremier = "https://api.football-data.org/v2/competitions/2021/matches";
 const urlLigue = "https://api.football-data.org/v2/competitions/2015/matches";
+let escudoLocal1;
+let escudoVis1;
+let escudoLocal;
+let escudoVis;
+const urlequipos = "https://api.football-data.org/v2/competitions/2014/standings"
+const urlPremierequipos = "https://api.football-data.org/v2/competitions/2021/standings";
+const urlLigueequipos = "https://api.football-data.org/v2/competitions/2015/standings";
+
+
+function fetchequipos(urlequipos) {
+    
+    fetch(urlequipos, {
+        method:"GET",
+        headers: {
+            "X-Auth-Token" : "ae293df4eff84857b6dc78121abb4db0"
+        }
+    }).then(response => {
+        if (response.ok){
+            return response.json()
+        }
+    }).then(dataequipos => {
+        resultados = dataequipos.standings[0].table
+        
+    })
+}
+
+fetchequipos(urlequipos);
 
 function fetchEstadisticas(url) {
     
@@ -18,9 +45,9 @@ function fetchEstadisticas(url) {
         }
     }).then(data => {
         estadisticas = data.matches
-        console.log(estadisticas)
+        
         quitarSpin();
-        console.log(texto);
+        
         titular.innerHTML = "ESTADISTICAS MEJORES EQUIPOS DE LA " + texto;
         estadisticasFavor(estadisticas)
         goals_matches();
@@ -37,21 +64,22 @@ function quitarSpin() {
 fetchEstadisticas(url);
 
 document.getElementById("LaLiga").addEventListener("click", ()=> {
-    
+    fetchequipos(urlequipos)
     fetchEstadisticas(url);
     texto = "LIGA"
     estadisticasPartido = [];
 })
 
 document.getElementById("premier").addEventListener("click", ()=> {
-    
+    fetchequipos(urlPremierequipos)
     fetchEstadisticas(urlPremier);
+     
     texto = "PREMIER LEAGUE"
     estadisticasPartido = [];
 })
 
 document.getElementById("ligue").addEventListener("click", ()=> {
-    // let urlPremier = "https://api.football-data.org/v2/competitions/2021/matches";
+    fetchequipos(urlLigueequipos)
     fetchEstadisticas(urlLigue);
     texto = "LIGUE 1"
     estadisticasPartido = [];
@@ -60,6 +88,14 @@ document.getElementById("ligue").addEventListener("click", ()=> {
 function estadisticasFavor(estadisticas) {
     
     for (let i = 0; i < estadisticas.length; i++) {
+        for (let x = 0; x < resultados.length; x++) {
+            if (estadisticas[i].homeTeam.id == resultados[x].team.id) {
+                escudoLocal1 = resultados[x].team.crestUrl
+            } else if (estadisticas[i].awayTeam.id == resultados[x].team.id) {
+                escudoVis1 = resultados[x].team.crestUrl
+            }
+            
+        }
         let estadoPartido = estadisticas[i].status;
         if (estadoPartido !== "FINISHED") {
             continue
@@ -74,6 +110,9 @@ function estadisticasFavor(estadisticas) {
         let golesEqLocal = estadisticas[i].score.fullTime.homeTeam;
         let golesEqVisitante = estadisticas[i].score.fullTime.awayTeam;
 
+        
+        ;
+
         let eqLocalEncontrado;
         estadisticasPartido.forEach(x => {
             if (x.id === idEqLocal) {
@@ -87,7 +126,8 @@ function estadisticasFavor(estadisticas) {
                 name: nombreEqLocal,
                 goals: golesEqLocal,
                 goalsAgainst: golesEqVisitante,
-                matches: 1
+                matches: 1,
+                escudo: escudoLocal1
             })
 
         } else {
@@ -109,7 +149,8 @@ function estadisticasFavor(estadisticas) {
                 name: nombreEqVisitante,
                 goals: golesEqVisitante,
                 goalsAgainst: golesEqLocal,
-                matches: 1
+                matches: 1,
+                escudo: escudoVis1
             })
 
         } else {
@@ -117,7 +158,7 @@ function estadisticasFavor(estadisticas) {
             eqVisEncontrado.goals += golesEqVisitante;
             eqVisEncontrado.goalsAgainst += golesEqLocal;
         }
-    }console.log(estadisticasPartido);
+    }
 }
 
 
@@ -135,11 +176,14 @@ function goals_matches() {
 function promedioGoles() {
     let tablaPromedioFavor = document.getElementById("tablaGolesFavor");
     tablaPromedioFavor.innerHTML = "";
-    console.log(estadisticasPartido)
+    
     estadisticasPartido.sort((a,b) => (a.avg < b.avg) ? 1: -1);
 
     for (let i = 0; i <= 4; i++) {
         const trProm = document.createElement("tr");
+
+        let escudotabla = document.createElement("img");
+        escudotabla.setAttribute("src", estadisticasPartido[i].escudo)
 
         let nombre = document.createElement("p");
         nombre.innerHTML = estadisticasPartido[i].name;
@@ -154,7 +198,7 @@ function promedioGoles() {
         estadisticasPartido[i].avg = estadisticasPartido[i].avg.toFixed(2);
         prom.innerHTML = estadisticasPartido[i].avg;
 
-        let datosProm = [nombre, goles, partidos, prom];
+        let datosProm = [escudotabla, nombre, goles, partidos, prom];
 
         for (let j = 0; j < datosProm.length; j++) {
             const tdProm = document.createElement("td");
@@ -174,6 +218,9 @@ function menosGoles() {
     for (let i = 0; i <= 4; i++) {
         const trMenos = document.createElement("tr");
 
+        let escudotabla = document.createElement("img");
+        escudotabla.setAttribute("src", estadisticasPartido[i].escudo)
+
         let nombre = document.createElement("p");
         nombre.innerHTML = estadisticasPartido[i].name;
 
@@ -183,7 +230,7 @@ function menosGoles() {
         let partidos = document.createElement("p");
         partidos.innerHTML = estadisticasPartido[i].matches;
 
-        let datosMenos = [nombre, goles, partidos];
+        let datosMenos = [escudotabla, nombre, goles, partidos];
 
         for (let j = 0; j < datosMenos.length; j++) {
             const tdMenos = document.createElement("td");
