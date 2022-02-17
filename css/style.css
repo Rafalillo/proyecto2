@@ -138,6 +138,7 @@ nav img {
 
 table img {
     width: 30px;
+    height: 30px;
 }
 
 .main-clasificacion {
@@ -156,7 +157,7 @@ table img {
 .clasificacion {
     width: 50%;
     margin-left: 25%;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .clas {
@@ -206,6 +207,7 @@ table img {
 .botones-partidos {
     margin-top: 50px;
     display:  flex;
+    justify-content: space-around;
     flex-direction: row;
 }
 
@@ -223,7 +225,7 @@ table img {
     font-family: 'Lato', sans-serif;
     font-family: 'Roboto', sans-serif;
     width: 100%!important;
-    margin-top: 50px;
+    margin-top: 100px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -232,18 +234,20 @@ table img {
 .max-goles {
     width: 50%;
     margin-left: 25%;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .menos-goles {
     width: 50%;
     margin-left: 25%;
-    margin-top: 135px;
+    margin-top: 50px;
 }
 
 .botones {
     display:  flex;
+    justify-content: space-around;
     flex-direction: row;
+    margin-bottom: 25px;
     
 }
 
